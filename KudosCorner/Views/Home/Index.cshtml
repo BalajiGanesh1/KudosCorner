@@ -2,30 +2,131 @@
     ViewBag.Title = "Home Page";
 }
 
+<link href="@Url.Content("~/Content/Index.css")" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/KudosForm.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 text-center">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-4 text-center">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="https://3.imimg.com/data3/VQ/HT/MY-8814506/brass-trophy-cup-500x500.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Congratulate</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 text-center">
+
+            <div class="addkudo-box" data-toggle="modal" data-target="#NewKudosModal">
+                <i class="fas fa-plus-circle fa-7x"></i>
+                <div class="subtitle-text">
+                    Add Kudo
+                </div>
+            </div>
+
+            <div id="NewKudosModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+                            <h4 class="modal-title" id="myModalLabel" style="color:black">Create New Kudo</h4>
+                        </div>
+                        <div class="modal-body" style="color:black">
+                            
+                            <form>
+                                <div class="form-group">
+                                    <label for="kudoTitle">Kudo Title</label>
+                                    <input type="text" class="form-control" id="kudoTitle" placeholder="Mahi maar raha hai..." name="kudoTitle" required>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="kudoImageSource">Image Link</label>
+                                    <input type="text" class="form-control" id="kudoImageSource" placeholder="https://img.theweek.in/content/dam/week/news/sports/images/2018/10/30/dhoni-odi-file-afp.jpg" name="kudoImageSource" required>
+
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="kudoDescription">Description</label>
+                                    <textarea class="form-control" rows="5" id="kudoDescription" placeholder="Dhoni has scored an unbeaten ton vs Australia in Melbourne.." name="kudoDescription"></textarea>
+
+                                </div>
+
+                                <div class="multiple-val-input">
+                                    <ul>
+                                        <input type="text">
+                                        <span class="input_hidden"></span>
+                                    </ul>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-4 text-center">
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-4 text-center">
+
+        </div>
+        <div class="col-md-4 text-center">
+
+        </div>
+        <div class="col-md-4 text-center">
+
+        </div>
+
+    </div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+   
