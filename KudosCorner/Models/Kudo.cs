@@ -13,10 +13,12 @@ namespace KudosCorner.Models
         [Key]
         public int ID { get; set; }
 
-        public List<int> AchieversID { get; set; }
-        public List<int> MessagesID { get; set; }
         public string Image_Link { get; set; }
         public string Description { get; set; }
+        public string Title { get; set; }
+        public List<int> AchieversID { get; set; }
+        public List<int> MessagesID { get; set; }
+       
 
         public virtual ICollection<User> Achievers { get; set; }
         public virtual ICollection<Wish> Congrats_Messages { get; set; }

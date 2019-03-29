@@ -1,0 +1,76 @@
+﻿@model KudosCorner.Models.Kudo
+
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+ 
+
+
+<div>
+    <h4>Kudo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Image_Link)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image_Link)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(item => item.Description)
+        </dd>
+
+
+        <dd>
+            @foreach (var item in Model.Congrats_Messages)
+            {
+                <!-- <div class="form-group">-->
+                @Html.LabelFor(modelItem => item.Message, htmlAttributes: new { @class = "control-label col-md-2" })
+            }
+
+
+
+            <div class="col-md-10">
+                @Html.EditorFor(model=> model.Congrats_Messages, "Wish", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Congrats_Messages, "", new { @class = "text-danger" })
+            </div>
+            <!-- </div>-->
+
+
+        </dd>
+
+
+
+
+
+    </dl>
+</div>
+}
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

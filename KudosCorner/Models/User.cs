@@ -10,13 +10,13 @@ namespace KudosCorner.Models
 {
     public class User
     {
-       
-        public int ID;
+       [Key]
+        public int ID { get; set; }
 
         public List<int> AchievementsKudoID { get; set; }
         public List<int> WishesId { get; set; }
-        public string UserName;
-        public string EMail;
+        public string UserName { get; set; }
+        public string EMail { get; set; }
 
         public virtual ICollection<Kudo> My_Achievements { get; set; }
         public virtual ICollection<Wish> My_Wishes { get; set; }

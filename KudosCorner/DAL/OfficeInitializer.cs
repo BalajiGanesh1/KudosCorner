@@ -12,36 +12,39 @@ namespace KudosCorner.DAL
     {
         protected override void Seed(OfficeContext context)
         {
-            User achiever1 = new User();
-            achiever1.EMail = "KalpanaChawla@gmail.com";
-            achiever1.UserName = "Kalpana Chawla";
-
-            User user2 = new User();
-            user2.EMail = "markzuckerburg@gmail.com";
-            user2.UserName = " Zuckerberg";
-
-            Wish wish1 = new Wish();
-            wish1.UserID = user2.ID;
-            wish1.Message = "Congrats Kalpana and Team!!!";
+            var kudos = new List<Kudo>
+            {
+            new Kudo{Image_Link="https://images.unsplash.com/photo-1504257365157-1496a50d48f2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",Description="Alexander",Title="Alexander Rocks"},
+            new Kudo{Image_Link="https://images.unsplash.com/photo-1504257365157-1496a50d48f2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",Description="Alonso",Title="Alonso Rocks"},
+            new Kudo{Image_Link="https://images.unsplash.com/photo-1504257365157-1496a50d48f2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",Description="Anand",Title="Anand wins grandmaster tournamentt"}
            
+            };  
 
-          
-            Kudo kudo1 = new Kudo();
-            wish1.KudoID = kudo1.ID;
-            user2.My_Wishes.Add(wish1);
-            kudo1.Image_Link = "https://images.pexels.com/photos/355906/pexels-photo-355906.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500";
-            kudo1.Description = "NASA Launches rocket into space";
-            kudo1.Achievers.Add(achiever1);
-            kudo1.Congrats_Messages.Add(wish1);
-            achiever1.My_Achievements.Add(kudo1);
-
-
-            context.Kudos.Add(kudo1);
-            context.Users.Add(achiever1);
-            context.Users.Add(user2);
+            kudos.ForEach(s => context.Kudos.Add(s));
             context.SaveChanges();
 
-         
+            var users = new List<User>
+            {
+            new User{ID=1050,UserName="Superman",EMail="Superman@gmail.com"},
+            new User{ID=4022,UserName="Spiderman",EMail="Spiderman@gmail.com"}
+           
+            };
+            users.ForEach(s => context.Users.Add(s));
+            context.SaveChanges();
+
+          /*  var wishes = new List<Wish>
+            {
+            new Wish{UserID=1,CourseID=1050,Grade=Grade.A},
+            new Wish{UserID=1,CourseID=4022,Grade=Grade.C},
+            new Wish{UserID=1,CourseID=4041,Grade=Grade.B},
+            new Wish{UserID=2,CourseID=1045,Grade=Grade.B},
+            new Wish{UserID=2,CourseID=3141,Grade=Grade.F},
+            
+            };
+            enrollments.ForEach(s => context.Enrollments.Add(s));
+            context.SaveChanges();
+            */
+
         }
     }
 }
