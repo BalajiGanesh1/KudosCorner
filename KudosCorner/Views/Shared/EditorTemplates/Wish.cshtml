@@ -1,4 +1,5 @@
-﻿@model ICollection <KudosCorner.Models.Wish>
+﻿@model KudosCorner.Models.Wish
 
-@foreach(var item in Model)
-@Html.EditorFor(o=>item.Message)
+@Html.EditorFor(o=>o.Message)
+
+

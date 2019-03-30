@@ -21,7 +21,7 @@ namespace KudosCorner.Models
        
 
         public virtual ICollection<User> Achievers { get; set; }
-        public virtual ICollection<Wish> Congrats_Messages { get; set; }
+        public virtual List<Wish> Congrats_Messages { get; set; }
 
 
 

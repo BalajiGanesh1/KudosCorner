@@ -40,32 +40,33 @@ namespace KudosCorner.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost, ActionName("Details")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DetailsPost(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var kudoToUpdate = db.Kudos.Find(id);
+         [ValidateAntiForgeryToken]
+         public ActionResult DetailsPost(int? id)
+         {
+             if (id == null)
+             {
+                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+             }
+             var kudoToUpdate = db.Kudos.Find(id);
 
-            if (TryUpdateModel(kudoToUpdate, "",
-                new string[] { "Congrats_Messages" }))
-            {
-                try
-                {
-                    db.SaveChanges();
+             if (TryUpdateModel(kudoToUpdate, "",
+                 new string[] { "Congrats_Messages" }))
+             {
+                 try
+                 {
+                     db.SaveChanges();
 
-                    return RedirectToAction("Index");
-                }
-                catch (DataException /* dex */)
+                     return RedirectToAction("Index");
+    }
+               catch (DataException /* dex */) 
                 {
                     //Log the error (uncomment dex variable name and add a line here to write a log.
                     ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
                 }
             }
             return View(kudoToUpdate);
-        }
+        } 
+            
 
         // GET: Kudo/Create
         public ActionResult Create()
