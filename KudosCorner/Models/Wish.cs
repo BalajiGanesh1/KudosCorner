@@ -11,10 +11,12 @@ namespace KudosCorner.Models
     public class Wish
     {
         [Key]
-        public int ID { get; set; }
+        public int? WishID { get; set; }
 
-        public int UserID{ get; set; }
-        public int KudoID{ get; set; }
-       public string Message { get; set; }
-    }
+        public int ?PsiogUserID{ get; set; }
+       
+        public int ?KudoID{ get; set; }
+        public string Message { get; set; }
+        
+        }
 }

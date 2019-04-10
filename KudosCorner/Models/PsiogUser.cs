@@ -8,13 +8,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace KudosCorner.Models
 {
-    public class User
+    public class PsiogUser
     {
-       [Key]
-        public int ID { get; set; }
-
-        public List<int> AchievementsKudoID { get; set; }
-        public List<int> WishesId { get; set; }
+        [Key]
+        public int? PsiogUserID { get; set; }
         public string UserName { get; set; }
         public string EMail { get; set; }
 

@@ -14,12 +14,15 @@
 <div class="form-horizontal">
     <h4>Kudo</h4>
     <hr />
+    @Html.HiddenFor(model => model.KudoID)
+
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
         @Html.LabelFor(model => model.Image_Link, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Image_Link, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Image_Link, "", new { @class = "text-danger" })
+            @Html.TextBoxFor(m => m.Image_Link, new { type = "file" })
+            @Html.ValidationMessageFor(m => m.Image_Link)
+
         </div>
     </div>
 
@@ -42,7 +45,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Congrats_Messages, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Congrats_Messages,"Wish", new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.Congrats_Messages, "Wish", new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Congrats_Messages, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -54,6 +57,7 @@
             <input type="submit" value="Create" class="btn btn-default" />
         </div>
     </div>
+
 </div>
 }
 

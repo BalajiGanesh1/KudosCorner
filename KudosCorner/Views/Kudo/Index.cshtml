@@ -7,10 +7,11 @@
 
 
 
-    <h2>Kudos Corner</h2>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
+<h2>Kudos Corner</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
     @foreach (var item in Model)
     {
         <div class="col-md-4 text-center">
@@ -19,49 +20,49 @@
                 <div class="card-body">
                     <h5 class="card-title">@item.Title</h5>
                     <p class="card-text">@item.Description</p>
-                    @Html.ActionLink("Congratulate", "Details", new { id = item.ID })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                    <a href="#" class="btn btn-primary">Congratulate</a>
+                    @Html.ActionLink("Congratulate", "Details", new { id = item.KudoID }, new { htmlAttributes = new { @class = "btn btn-primary" } })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.KudoID }, new { htmlAttributes = new { @class = "btn btn-primary" } })
+                   
                 </div>
             </div>
 
         </div>
     }
 
-    
 
-<!--
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Image_Link)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            Congrats Messages
 
-        </th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+    <!--
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image_Link)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td></td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-            </td>
-        </tr>
-    }
+            <th>
+                @Html.DisplayNameFor(model => model.Image_Link)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                Congrats Messages
 
-</table>
-    -->
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Image_Link)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td></td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.KudoID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.KudoID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.KudoID })
+                </td>
+            </tr>
+        }
+
+    </table>
+        -->

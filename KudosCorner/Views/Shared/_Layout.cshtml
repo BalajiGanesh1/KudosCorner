@@ -7,9 +7,15 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+   
+    @{
+        ViewBag.Name = (User.Identity as System.Security.Claims.ClaimsIdentity)?.FindFirst("name")?.Value;
+    }
+
+
 </head>
 <body>
-   <!-- <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -24,11 +30,16 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("PsiogContacts", "PsiogContacts", "Home")</li>
                 </ul>
+                <h4 style="color:aliceblue;display:inline-block;float:right">Hi @ViewBag.Name!</h4><br />
+                @Html.ActionLink("Sign out", "SignOut", "Auth")
             </div>
+           
         </div>
+       
     </div>
-       -->
+       
     <div class="container body-content">
         @RenderBody()
         <hr />

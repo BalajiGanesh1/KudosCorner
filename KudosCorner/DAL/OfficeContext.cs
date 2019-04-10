@@ -14,12 +14,18 @@ namespace KudosCorner.DAL
         }
 
         public DbSet<Kudo> Kudos { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<PsiogUser> PsiogUsers { get; set; }
         public DbSet<Wish> Wishes{ get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            modelBuilder.Entity<Kudo>()
+           .HasMany(c=>c.Achievers).WithMany(m=>m.My_Achievements)
+           .Map(t => t.MapLeftKey("KudoID")
+           .MapRightKey("PsiogUserID")
+           .ToTable("KudoPsiogUser"));
         }
     }
 }

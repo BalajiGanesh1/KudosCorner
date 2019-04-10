@@ -8,16 +8,24 @@ using System.Web;
 using System.Web.Mvc;
 using KudosCorner.DAL;
 using KudosCorner.Models;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text;
 
 namespace KudosCorner.Controllers
 {
+    [Authorize]
     public class KudoController : Controller
     {
         private OfficeContext db = new OfficeContext();
 
         // GET: Kudo
+      
         public ActionResult Index()
         {
+            var userClaims = User.Identity as System.Security.Claims.ClaimsIdentity;
+            //You get the user’s first and last name below:
+            ViewBag.Name = userClaims?.FindFirst("name")?.Value;
+            
             return View(db.Kudos.ToList());
         }
 
@@ -48,24 +56,34 @@ namespace KudosCorner.Controllers
                  return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
              }
              var kudoToUpdate = db.Kudos.Find(id);
+             var commessges = db.Wishes.Find(id);
 
-             if (TryUpdateModel(kudoToUpdate, "",
-                 new string[] { "Congrats_Messages" }))
+
+            if (TryUpdateModel(kudoToUpdate, "", new string[] { "Congrats_Messages" }))
              {
                  try
                  {
-                     db.SaveChanges();
+                   /* List<string> strings = new List<string>() { "one", "two", "three" };
 
+                    StringBuilder sb = strings
+                      .Select(s => s)
+                      .Aggregate(new StringBuilder(), (ag, n) => ag.Append(n).Append(", "));
+
+                    if (sb.Length > 0) { sb.Remove(sb.Length - 2, 2); }
+
+                    Console.WriteLine(sb.ToString());
+                    db.SaveChanges();
+                    */
                      return RedirectToAction("Index");
-    }
-               catch (DataException /* dex */) 
-                {
-                    //Log the error (uncomment dex variable name and add a line here to write a log.
-                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
-                }
-            }
-            return View(kudoToUpdate);
-        } 
+                 }
+                 catch (DataException /* dex */) 
+                 {
+                     //Log the error (uncomment dex variable name and add a line here to write a log.
+                     ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                 }
+             }
+             return View(kudoToUpdate);
+         } 
             
 
         // GET: Kudo/Create
@@ -85,7 +103,13 @@ namespace KudosCorner.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    Wish newwish = new Wish();
+                    newwish.KudoID = kudo.KudoID;
+                    newwish.Message = kudo.Congrats_Messages[0].Message;
+
+
                     db.Kudos.Add(kudo);
+                    db.Wishes.Add(newwish);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
